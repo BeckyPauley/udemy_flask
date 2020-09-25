@@ -2,12 +2,13 @@ from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
 
+import config
 from security import authenticate, identity
 from user import UserRegister
 from item import Item, ItemList
 
 app = Flask(__name__)
-app.secret_key  = '*****'
+app.secret_key  = config.app_secret_key
 api = Api(app)
 
 jwt = JWT(app, authenticate, identity) 
